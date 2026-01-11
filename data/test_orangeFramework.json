@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "username1": "Admin",
+      "password1": "admin123",
+      "firstname": "Harry",
+      "middlename": "James",
+      "lastname": "Potter",
+      "username2": "Harry4",
+      "password2": "HaPo@1289",
+      "dl_no": "DL-987654",
+      "license_expiry": "15",
+      "nationality": "Indian",
+      "marital_status": "Single",
+      "gender": "Male"
+    }
+  ]
+}
