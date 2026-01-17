@@ -8,7 +8,6 @@ class PersonalDetailsPage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 20)
 
-        # Fields
         self.emp_id = (By.XPATH, "//label[text()='Employee Id']/following::input[1]")
         self.license = (By.XPATH, "//label[contains(text(),'License')]/following::input[1]")
         self.license_expiry = (By.XPATH, "//label[contains(text(),'Expiry')]/following::input[1]")
@@ -18,8 +17,6 @@ class PersonalDetailsPage:
 
         self.save_btn = (By.XPATH, "//button[normalize-space()='Save']")
         self.toast = (By.XPATH, "//p[contains(@class,'toast-message')]")
-
-        # Loader
         self.loader = (By.CLASS_NAME, "oxd-loading-spinner")
 
     def wait_for_idle(self):

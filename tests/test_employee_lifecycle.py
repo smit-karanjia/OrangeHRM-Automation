@@ -15,13 +15,13 @@ with open("data/test_orangeFramework.json") as f:
 def test_employee_lifecycle(browserInstance, data):
     driver = browserInstance
 
-    # 1. Login as Admin
+    # Login as Admin
     LoginPage(driver).login(
         data["username1"],
         data["password1"]
     )
 
-    # 2. Add Employee
+    # Add Employee
     pim = PimPage(driver)
     pim.add_employee(
         data["firstname"],
@@ -31,7 +31,7 @@ def test_employee_lifecycle(browserInstance, data):
         data["password2"]
     )
 
-    # 3. Personal Details Page
+    # Personal Details Page
     personal = PersonalDetailsPage(driver)
 
     emp_id = personal.get_emp_id()
@@ -45,22 +45,22 @@ def test_employee_lifecycle(browserInstance, data):
     personal.select_gender(data["gender"])
     personal.save_details()
 
-    # 4. Logout Admin
+    # Logout Admin
     HeaderPage(driver).logout()
 
-    # 5. Login as New Employee
+    # Login as New Employee
     LoginPage(driver).login(
         data["username2"],
         data["password2"]
     )
 
     HeaderPage(driver).logout()
-    # 6. Login as Admin Again
+    # Login as Admin Again
     LoginPage(driver).login(
         data["username1"],
         data["password1"]
     )
 
-    # 7. Delete Employee
+    # Delete Employee
     pim = PimPage(driver)
     pim.delete_employee(emp_id)
