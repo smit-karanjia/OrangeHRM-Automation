@@ -8,15 +8,11 @@ class PimPage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 20)
 
-        # -------------------------
         # Navigation
-        # -------------------------
         self.pim_menu = (By.XPATH, "//span[text()='PIM']")
         self.add_btn = (By.XPATH, "//button[normalize-space()='Add']")
 
-        # -------------------------
         # Add Employee
-        # -------------------------
         self.first_name = (By.NAME, "firstName")
         self.middle_name = (By.NAME, "middleName")
         self.last_name = (By.NAME, "lastName")
@@ -30,9 +26,7 @@ class PimPage:
 
         self.emp_id_field = (By.XPATH, "//label[text()='Employee Id']/following::input[1]")
 
-        # -------------------------
         # Delete Employee
-        # -------------------------
         self.emp_id_search = (By.XPATH, "//label[text()='Employee Id']/following::input[1]")
         self.search_btn = (By.XPATH, "//button[normalize-space()='Search']")
         self.delete_icon = (By.XPATH, "//i[contains(@class,'bi-trash')]")
@@ -48,9 +42,7 @@ class PimPage:
         except:
             pass
 
-    # -------------------------
     # Add Employee
-    # -------------------------
     def add_employee(self, first, middle, last, username, password):
         self.wait.until(EC.element_to_be_clickable(self.pim_menu)).click()
         self.wait.until(EC.element_to_be_clickable(self.add_btn)).click()
@@ -73,12 +65,9 @@ class PimPage:
         self.wait_for_idle()
         self.driver.execute_script("arguments[0].click();", save)
 
-        # HARD ASSERT: must land on Personal Details page
         self.wait.until(EC.visibility_of_element_located(self.emp_id_field))
 
-    # -------------------------
     # Delete Employee
-    # -------------------------
     def delete_employee(self, emp_id):
         self.wait.until(EC.element_to_be_clickable(self.pim_menu)).click()
         self.wait_for_idle()
@@ -93,6 +82,5 @@ class PimPage:
         self.wait.until(EC.element_to_be_clickable(self.delete_icon)).click()
         self.wait.until(EC.element_to_be_clickable(self.confirm_delete)).click()
 
-        # REAL ASSERT: employee must be gone
         self.wait.until(EC.visibility_of_element_located(self.no_records))
         assert self.driver.find_element(*self.no_records).is_displayed(), "Employee was NOT deleted"

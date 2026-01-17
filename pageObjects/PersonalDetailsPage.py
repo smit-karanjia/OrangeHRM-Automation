@@ -43,7 +43,6 @@ class PersonalDetailsPage:
         field.clear()
         field.send_keys(value)
 
-    # 🔥 STABLE DATE SETTER (no calendar UI)
     def set_date_direct(self, locator, value):
         self.wait_for_idle()
         field = self.wait.until(EC.visibility_of_element_located(locator))
